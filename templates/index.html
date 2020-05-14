@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block script %} 
+
+<script>
+
+function Register()
+{
+	document.getElementById("register").style.display ="block";
+	document.getElementById("start").style.display ="none";
+}
+
+function Reset()
+{
+	document.getElementById("start").style.display ="block";
+	document.getElementById("register").style.display ="none";
+}
+
+function Home()
+{
+    document.getElementById("home").className = "current";
+    document.getElementById("aboutus").classList.remove("current");
+
+}
+
+function Aboutus()
+{
+    document.getElementById("aboutus").className = "current";
+    document.getElementById("home").classList.remove("current");
+    document.getElementById("register").style.display ="none";
+    document.getElementById("start").style.display ="none";
+
+}
+
+</script>
+
+{% endblock %}
+
+{% block nav %}
+<ul class="menu">
+<li id="home" class="current" ><a href="/" onclick="Home();" >Home</a></li>
+<li id="aboutus"><a type="button" onclick="Aboutus();">About Us</a></li>	
+</ul>
+{% endblock %}
+
+{% block body %}
+
+    <div class="col_9">
+        <div id ="start" style="display:block">
+        
+            <h3>Welcome To Spectra Technical Quiz </h3>
+        <p>
+        Spectra Technical Quiz is an Event for GEC Students.........................
+        </p>
+        <a class="button" onclick = "Register();">SIGNUP</a>
+        <P>You need to Signup for Participating</p>
+        </div>
+    
+        <div style="display:none" id ="register">
+        <h3>Register For Quiz </h3>
+            <br><br>
+        <form id="regForm" method="POST" action="/register">
+        <div>
+            <label>Branch</label>
+            <select name="branch" required>
+                <option value="">--select--</option>
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="ME">ME</option>
+                <option value="IT">IT</option>
+            </select>
+        </div>
+        <br />
+        <div>
+            <label>Semester</label>
+            <select name="semester" required>
+                <option value="">--select--</option>
+                <option value="s1">S1</option>
+                <option value="s2">S2</option>
+                <option value="s3">S3</option>
+                <option value="s4">S4</option>
+                <option value="s5">S5</option>
+                <option value="s6">S6</option>
+                <option value="s7">S7</option>
+                <option value="s8">S8</option>
+            </select>
+        </div>
+        <br />
+        <div>
+            <label>Name: </label>
+            <input type="text" name="name" required>
+        </div><br />
+        <div>
+            <label>Email Address: </label>
+            <input type="email" name="email" required>
+        </div><br />
+        <div>
+            <label>Mobile : </label>
+            <input type="tel" name="phone" required>
+        </div><br />
+        <div>
+            <label>Username: </label>
+            <input type="text" name="username" required>
+        </div><br />
+        <div>
+            <label>Password: </label>
+            <input type="password" name="password" required>
+        </div><br />
+        <div>
+            <label>Password Confirm: </label>
+            <input type="password" name="password2" required>
+        </div><br />
+        <div>
+            <button class="btn btn-primary" type="submit">SIGNUP</button>
+            <button class="btn btn-primary" type="button" onclick="Reset();">CANCEL</button>
+        </div>
+    </form>
+    
+</div>
+</div>
+        
+        <div class="col_3">
+            <h4>Take Quiz</h4>
+        <form method="post" action="/user/login">
+            <label> Username: </label>
+            <input type="text" name="username" required>
+            <label> Password: </label>
+            <input type="password" name="password" required><br><br>
+            <button class="btn btn-primary" type="submit">LOGIN</button>
+        </form>
+        </div>
+       
+    
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script>
+function AddQuestion()
+{
+    document.getElementById("addquestion").className = "current";
+    document.getElementById("userlist").classList.remove("current");
+    document.getElementById("viewquestions").classList.remove("current");
+    document.getElementById("addquest").style.display = "block";
+
+}
+
+function Userlist()
+{
+    document.getElementById("userlist").className = "current";
+    document.getElementById("addquestion").classList.remove("current");
+    document.getElementById("viewquestions").classList.remove("current");
+    document.getElementById("addquest").style.display = "none";
+
+}
+
+function ViewQuest()
+{
+    document.getElementById("viewquestions").className = "current";
+    document.getElementById("addquestion").classList.remove("current");
+    document.getElementById("userlist").classList.remove("current");
+    document.getElementById("addquest").style.display = "none";
+}
+
+</script>
+{% endblock %}
+
+
+{% block nav %}
+<ul class="menu">
+<li id="addquestion">
+<a type="button" onclick="AddQuestion();">Add Question</a></li>
+<li id="userlist"><a type="button" onclick="Userlist();" >User List</a></li>
+<li id="viewquestions"><a type="button" onclick="ViewQuest();" >View Questions</a></li>
+<li style="float: right;">Hi {{User}}<a href="/users/logout">Logout</a></li>
+</ul>
+{% endblock %}
+
+
+
+{% block body %}
+
+
+<div class="col_12">
+    <div style="display:none" id ="addquest">
+        <h3>Add Quiz </h3>
+        <br><br>
+    <form action="/Admin/addquiz" method="POST">
+        <div>
+            <label>Question: </label>
+            <input type="text" name="question" required>
+        </div><br />
+
+            <br>
+        <div class="col_12" style="margin: 20px;">
+            <div>
+                <label>Choice 1: </label>
+                <input type="text" name="choice1" required>
+            </div><br />
+            <div>
+                <label>Choice 2: </label>
+                <input type="text" name="choice2" required>
+            </div><br />
+            <div>
+                <label>Choice 3: </label>
+                <input type="text" name="choice3" required>
+            </div><br />
+            <div>
+                <label>Choice 4: </label>
+                <input type="text" name="choice4" required>
+            </div><br />
+            <div>
+                <label>Answer : </label>
+                <select type="" name="answer" required>
+                    <option value="">--select--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div><br />
+        </div>
+            <div>
+                <button class="btn btn-primary" type="submit">ADD</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

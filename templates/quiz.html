@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<link href="{{ url_for('static',filename = 'css/app.css')}}" rel="stylesheet">
+<link href="{{ url_for('static',filename = 'css/game.css')}}" rel="stylesheet">
+<script>
+var seconds = 30;
+function secondPassed() {
+
+          var minute = Math.floor(seconds/60);
+		      var second = seconds%60;
+          if (seconds <= 0) {
+              clearInterval(countdownTimer);
+             //form1 is your form name
+             document.getElementById("form2").submit();
+            
+            //go to the end page
+            
+          } else {
+            	document.getElementById("time").innerHTML = minute +":"+ second;   
+          }
+          seconds--;
+      }
+      var countdownTimer = setInterval('secondPassed()', 1000);
+
+
+</script>
+{% endblock %}
+
+{% block nav %}
+<ul class="menu">
+<li style="float: right;">Hi {{User}}<a href="/users/logout">Logout</a></li>
+</ul>
+{% endblock %}
+
+{% block body %}
+
+<div class="container col_9">
+
+    <div id="game" class="justify-center flex-column">
+      <div id="hud">
+        
+        <div id="hud-item">
+          <p class="hud-prefix">
+            Time
+          </p>
+          <h1 class="hud-main-text" id="time">
+            0:30
+          </h1>
+        </div>
+      </div>
+      <form id="form2" method="POST" action="/quiz/next">
+    
+      <h3 id="question" name ="question">{{quiz.Question}}</h3>
+      <input type="hidden" value="{{quiz.Quest_No}}" name="questno"/>
+      <div class="choice-container">
+        <p class="choice-prefix">A</p>
+        <p class="choice-text"><input type="radio" value="1" name="ans" checked /> &nbsp;{{quiz.Choice1}}</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">B</p>
+        <p class="choice-text"><input type="radio" value="2" name="ans"/> &nbsp;{{quiz.Choice2}}</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">C</p>
+        <p class="choice-text"><input type="radio" value="3" name="ans"/> &nbsp;{{quiz.Choice3}}</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">D</p>
+        <p class="choice-text"><input type="radio" value="4" name="ans"/> &nbsp;{{quiz.Choice4}}</p>
+      </div><br>
+      <br><div>
+          <button type="submit">Submit</button>
+      </div>
+
+      <br><br>
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Spectra Quiz</title>
+{% block script %}  {% endblock %}
+
+<link href="{{ url_for('static',filename = 'css/kickstart.css')}}" rel="stylesheet">
+<link href="{{ url_for('static',filename = 'css/style.css')}}" rel="stylesheet">
+<script src="{{ url_for('static',filename = 'js/kickstart.js')}}"></script>        
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- Menu Horizontal -->
+{% block nav %} {% endblock %}
+
+
+<div class="grid">
+    <div class="col_12">
+        <div class="col_9">
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                {% if category=='success' %}
+                <div class="notice success" style="font-size: 15px;"><i class="icon-remove-sign icon-large"></i>
+                   <center>{{message}}</center> 
+                    <a href="#close" class="icon-remove"></a>
+                  </div>
+                {% endif %}
+                
+                {% if category=='error' %}
+				<div class="notice error" style="font-size: 15px;"><i class="icon-remove-sign icon-large"></i>
+					<center> {{message}}</center>
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+                {% endif %}
+              
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+
+        </div>
+
+{% block body %}{% endblock %}
+
+</div>
+    
+</div>
+
+<div class="clear"></div>
+
+
+</body></html>
