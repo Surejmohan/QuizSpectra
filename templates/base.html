@@ -15,7 +15,10 @@
 
 <!-- Menu Horizontal -->
 {% block nav %} {% endblock %}
-
+<script>
+  window.setTimeout("document.getElementById('succ').style.display='none';", 4000); 
+  window.setTimeout("document.getElementById('err').style.display='none';", 4000); 
+</script>
 
 <div class="grid">
     <div class="col_12">
@@ -24,14 +27,14 @@
             {% if messages %}
               {% for category, message in messages %}
                 {% if category=='success' %}
-                <div class="notice success" style="font-size: 15px;"><i class="icon-remove-sign icon-large"></i>
+                <div id ="succ" class="notice success" style="font-size: 15px;"><i class="icon-remove-sign icon-large"></i>
                    <center>{{message}}</center> 
                     <a href="#close" class="icon-remove"></a>
                   </div>
                 {% endif %}
                 
                 {% if category=='error' %}
-				<div class="notice error" style="font-size: 15px;"><i class="icon-remove-sign icon-large"></i>
+				<div id ="err" class="notice error" style="font-size: 15px;"><i class="icon-remove-sign icon-large"></i>
 					<center> {{message}}</center>
                     <a href="#close" class="icon-remove"></a>
                 </div>

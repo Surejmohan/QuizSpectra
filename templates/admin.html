@@ -8,6 +8,8 @@ function AddQuestion()
     document.getElementById("userlist").classList.remove("current");
     document.getElementById("viewquestions").classList.remove("current");
     document.getElementById("addquest").style.display = "block";
+    document.getElementById("quest").style.display = "none";
+    document.getElementById("user").style.display = "none";
 
 }
 
@@ -17,6 +19,8 @@ function Userlist()
     document.getElementById("addquestion").classList.remove("current");
     document.getElementById("viewquestions").classList.remove("current");
     document.getElementById("addquest").style.display = "none";
+    document.getElementById("quest").style.display = "none";
+    document.getElementById("user").style.display = "block";
 
 }
 
@@ -26,6 +30,8 @@ function ViewQuest()
     document.getElementById("addquestion").classList.remove("current");
     document.getElementById("userlist").classList.remove("current");
     document.getElementById("addquest").style.display = "none";
+    document.getElementById("user").style.display = "none";
+    document.getElementById("quest").style.display = "block";
 }
 
 </script>
@@ -87,12 +93,74 @@ function ViewQuest()
             </div><br />
         </div>
             <div>
-                <button class="btn btn-primary" type="submit">ADD</button>
+                <button class="btn" type="submit">ADD</button>
             </div>
         </form>
     </div>
 
 </div>
+
+
+
+
+<div class="col_12">
+    <div style="display:none" id ="user">
+       <Center><h3>Users List </h3></Center> 
+        <br><br>
+        <div style="min-width: 100px;">
+            <table class="table table-striped table-dark">
+                <tr>
+      
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Branch</th>
+                    <th>Semester</th>
+                    <th>Score</th>
+                    <th>Delete</th>
+                </tr>
+                {% for list in list1 %}
+                <tr>
+                    <th>{{list.id}}</th>
+                    <th>{{list.Username}}</th>
+                    <th>{{list.Name}}</th>
+                    <th>{{list.Branch}}</th>
+                    <th>{{list.Semester}}</th>
+                    <th>{{list.Score}}</th>
+                    <th><a class = "btn"href="/Admin/delete/{{list.id}}/">DELETE</a></th>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="col_12">
+    <div style="display:none" id ="quest">
+       <Center><h3>View Question </h3></Center> 
+        <br><br>
+        <div style="min-width: 100px;">
+            <table class="table table-striped table-dark">
+                <tr>
+                    <th>SI NO</th>
+                    <th>Question</th>
+                </tr>
+                {% for quest in quests %}
+                <tr>
+                    <th>{{quest.Quest_No}}</th>
+                    <th>{{quest.Question}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+</div>
+
 
 
 

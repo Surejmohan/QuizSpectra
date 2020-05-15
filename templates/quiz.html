@@ -4,6 +4,7 @@
 <link href="{{ url_for('static',filename = 'css/app.css')}}" rel="stylesheet">
 <link href="{{ url_for('static',filename = 'css/game.css')}}" rel="stylesheet">
 <script>
+
 var seconds = 30;
 function secondPassed() {
 
@@ -39,6 +40,14 @@ function secondPassed() {
 
     <div id="game" class="justify-center flex-column">
       <div id="hud">
+        <div id="hud-item">
+          <p id="progressText" class="hud-prefix">
+            Question  {{quiz.Quest_No}}/10
+          </p>
+          <div id="progressBar">
+            <div id="progressBarFull"></div>
+          </div>
+        </div>
         
         <div id="hud-item">
           <p class="hud-prefix">
@@ -70,12 +79,24 @@ function secondPassed() {
         <p class="choice-text"><input type="radio" value="4" name="ans"/> &nbsp;{{quiz.Choice4}}</p>
       </div><br>
       <br><div>
-          <button type="submit">Submit</button>
+          <button class="btn" type="submit" >SUBMIT</button>
       </div>
 
       <br><br>
       </form>
     </div>
   </div>
+<script>
+const progressBarFull = document.getElementById("progressBarFull");
+function progress()
+{
+  var curr = '{{quiz.Quest_No}}'
+  progressBarFull.style.width = `${(parseInt(curr) / 10) * 100}%`;
+  console.log(curr);
+  console.log((parseInt(curr) / 10) * 100)
+}
+var progressbar = setInterval('progress()', 100);
 
+
+</script>
   {% endblock %}
