@@ -16,7 +16,7 @@ class User(db.Model):
     __tablename__ = 'User'
     id = db.Column(db.Integer, autoincrement=True)
     Username = db.Column(db.String(50),unique=True, nullable=False,primary_key=True)
-    Password = db.Column(db.String(15),nullable=False)
+    Password = db.Column(db.String(50),nullable=False)
    
     def __init__(self,Username,Password):
         self.Username=Username
@@ -49,11 +49,11 @@ class Other(db.Model):
 class Quiz(db.Model):
     __tablename__ = 'Quiz'
     Quest_No = db.Column(db.Integer, primary_key=True,autoincrement=True)
-    Question = db.Column(db.String(80))
-    Choice1 = db.Column(db.String(50))
-    Choice2 = db.Column(db.String(50))
-    Choice3 = db.Column(db.String(50))
-    Choice4 = db.Column(db.String(50))
+    Question = db.Column(db.String(150))
+    Choice1 = db.Column(db.String(80))
+    Choice2 = db.Column(db.String(80))
+    Choice3 = db.Column(db.String(80))
+    Choice4 = db.Column(db.String(80))
     Answer = db.Column(db.Integer)
 
     def __init__(self,Question,Choice1,Choice2,Choice3,Choice4,Answer):
