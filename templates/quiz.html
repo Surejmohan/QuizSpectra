@@ -60,23 +60,23 @@ function secondPassed() {
       </div>
       <form id="form2" method="POST" action="/quiz/next">
     
-      <h3 id="question" name ="question">{{quiz.Question}}</h3>
+      <h3 id="question" name ="question"><pre>{{quiz.Question}}</pre></h3>
       <input type="hidden" value="{{quiz.Quest_No}}" name="questno"/>
       <div class="choice-container">
         <p class="choice-prefix">A</p>
-        <p class="choice-text"><input type="radio" value="1" name="ans" checked /> &nbsp;{{quiz.Choice1}}</p>
+        <pre class="choice-container" style="margin: auto;"><input type="radio" value="1" name="ans" required>&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice1}}</pre></pre>
       </div>
       <div class="choice-container">
         <p class="choice-prefix">B</p>
-        <p class="choice-text"><input type="radio" value="2" name="ans"/> &nbsp;{{quiz.Choice2}}</p>
+        <pre class="choice-container" style="margin: auto;"><input type="radio" value="2" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice2}}</pre></pre>
       </div>
       <div class="choice-container">
         <p class="choice-prefix">C</p>
-        <p class="choice-text"><input type="radio" value="3" name="ans"/> &nbsp;{{quiz.Choice3}}</p>
+        <pre class="choice-container" style="margin: auto;"><input type="radio" value="3" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice3}}</pre></pre>
       </div>
       <div class="choice-container">
         <p class="choice-prefix">D</p>
-        <p class="choice-text"><input type="radio" value="4" name="ans"/> &nbsp;{{quiz.Choice4}}</p>
+        <pre class="choice-container" style="margin: auto;"><input type="radio" value="4" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice4}}</pre></pre>
       </div><br>
       <br><div>
           <button class="btn" type="submit" >SUBMIT</button>

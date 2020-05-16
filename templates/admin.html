@@ -60,26 +60,26 @@ function ViewQuest()
     <form action="/Admin/addquiz" method="POST">
         <div>
             <label>Question: </label>
-            <input type="text" name="question" required>
+            <textarea cols="40"  name="question" required></textarea>
         </div><br />
 
             <br>
         <div class="col_12" style="margin: 20px;">
             <div>
                 <label>Choice 1: </label>
-                <input type="text" name="choice1" required>
+                <textarea rows="2"cols="25" type="text" name="choice1" required></textarea>
             </div><br />
             <div>
                 <label>Choice 2: </label>
-                <input type="text" name="choice2" required>
+                <textarea rows="2"cols="25"  type="text" name="choice2" required></textarea>
             </div><br />
             <div>
                 <label>Choice 3: </label>
-                <input type="text" name="choice3" required>
+                <textarea rows="2"cols="25" type="text" name="choice3" required></textarea>
             </div><br />
             <div>
                 <label>Choice 4: </label>
-                <input type="text" name="choice4" required>
+                <textarea rows="2"cols="25"  type="text" name="choice4" required></textarea>
             </div><br />
             <div>
                 <label>Answer : </label>
@@ -152,7 +152,7 @@ function ViewQuest()
                 {% for quest in quests %}
                 <tr>
                     <th>{{quest.Quest_No}}</th>
-                    <th>{{quest.Question}}</th>
+                    <th><pre>{{quest.Question}}</pre></th>
                 </tr>
                 {% endfor %}
             </table>
