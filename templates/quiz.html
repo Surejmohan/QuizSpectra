@@ -13,7 +13,15 @@ function secondPassed() {
           if (seconds <= 0) {
               clearInterval(countdownTimer);
              //form1 is your form name
-             document.getElementById("form2").submit();
+             if (document.getElementById("check1").checked || document.getElementById("check2").checked || 
+             document.getElementById("check3").checked || document.getElementById("check4").checked)
+             {
+              document.getElementById("form2").submit();
+             }
+             else {
+                document.getElementById("check1").value = "5"
+                document.getElementById("check1").checked = "true";
+                document.getElementById("form2").submit(); }
             
             //go to the end page
             
@@ -64,19 +72,19 @@ function secondPassed() {
       <input type="hidden" value="{{quiz.Quest_No}}" name="questno"/>
       <div class="choice-container">
         <p class="choice-prefix">A</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio" value="1" name="ans" required>&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice1}}</pre></pre>
+        <pre class="choice-container" style="margin: auto;"><input type="radio"  id="check1" value="1" name="ans" required>&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice1}}</pre></pre>
       </div>
       <div class="choice-container">
         <p class="choice-prefix">B</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio" value="2" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice2}}</pre></pre>
+        <pre class="choice-container" style="margin: auto;"><input type="radio" id="check2" value="2" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice2}}</pre></pre>
       </div>
       <div class="choice-container">
         <p class="choice-prefix">C</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio" value="3" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice3}}</pre></pre>
+        <pre class="choice-container" style="margin: auto;"><input type="radio" id="check3" value="3" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice3}}</pre></pre>
       </div>
       <div class="choice-container">
         <p class="choice-prefix">D</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio" value="4" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice4}}</pre></pre>
+        <pre class="choice-container" style="margin: auto;"><input type="radio" id="check4" value="4" name="ans" />&nbsp;<pre class="choice-container" style="margin: auto;">{{quiz.Choice4}}</pre></pre>
       </div><br>
       <br><div>
           <button class="btn" type="submit" >SUBMIT</button>
@@ -92,8 +100,6 @@ function progress()
 {
   var curr = '{{quiz.Quest_No}}'
   progressBarFull.style.width = `${(parseInt(curr) / 10) * 100}%`;
-  console.log(curr);
-  console.log((parseInt(curr) / 10) * 100)
 }
 var progressbar = setInterval('progress()', 100);
 

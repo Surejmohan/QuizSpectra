@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block script %}{% endblock %}
+
+{% block nav %}
+<ul class="menu">
+    <li style="float: right;">Hi {{User}}<a href="/users/logout">Logout</a></li>
+    </ul>
+{% endblock %}
+
+
+{% block body %}
+<br><br><br>
+<div class="col_9">
+    <div id ="start" style="display:block">
+        <h3>GUIDELINES</h3><br><br><br>
+        <label><b style="color: red;">*</b>&nbsp;<b>Read the Guidelines Carefully</b></label>
+        <br><br>
+        <div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <br><br>
+            <center><a href="/Accept" class="btn" type="button" >Agree</a></center><br><br>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

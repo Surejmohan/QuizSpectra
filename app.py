@@ -125,10 +125,16 @@ def login():
 
         if login:
             session["user"] = Username
-            flash(Username +' Logged in','success')
-            return redirect(url_for('Quiz_start'))
+            use = Other.query.filter_by(Username = session["user"]).first()
+            if(use.Score == -1):
+                flash(Username +' Logged in','success')
+                return redirect(url_for('Rules'))
+            else:
+                session.clear()
+                flash('You have Already Completed Your Quiz!','error')
+                return redirect(url_for('index'))
 
-        elif Username == 'Admin' or Password == 'Administartor':
+        elif Username == 'Admin' and Password == '1234567890':
             session["admin"] = "Admin"
             flash('Admin Logged in','success')
             return redirect(url_for('Admindashboard'))
@@ -136,6 +142,30 @@ def login():
         else:
             flash('User is Not Registerd','error')
             return redirect(url_for('index'))
+
+
+@app.route('/rules')
+def Rules():
+
+    if "user" in session:
+        User = session["user"]
+        return render_template('rules.html',User= User)
+    else:
+        flash('Invalid Access','error')
+        return redirect(url_for('index'))
+
+
+@app.route('/Accept')
+def Agree():
+
+    if "user" in session:
+        return redirect(url_for('Quiz_start'))
+        
+    else:
+        flash('Invalid Access','error')
+        return redirect(url_for('index'))
+
+
 
 
 @app.route('/users/logout')
@@ -168,7 +198,6 @@ def Quiz_start():
         else:
             session.clear()
             flash('You have  Completed Your Quiz! or Get Timed Out','error')
-        
             return redirect(url_for('index'))
     else:
         flash('Invalid Access','error')
@@ -184,6 +213,7 @@ def Quiz_next():
         if request.method == 'POST':     
             questno = request.form['questno']
             ans = request.form['ans']
+            print(ans)
             if session["no"] < int(questno):
                 print(ans)
                 if(int(questno) == 10):
