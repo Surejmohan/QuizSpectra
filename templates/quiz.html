@@ -3,6 +3,71 @@
 {% block script %}
 <link href="{{ url_for('static',filename = 'css/app.css')}}" rel="stylesheet">
 <link href="{{ url_for('static',filename = 'css/game.css')}}" rel="stylesheet">
+<style>
+  /* The container */
+  .container1 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container1:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container1 input:checked ~ .checkmark {
+    background-color: #56a5eb;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container1 input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container1 .checkmark:after {
+     top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+  </style>
 <script>
 
 var seconds = 30;
@@ -32,6 +97,8 @@ function secondPassed() {
       }
       var countdownTimer = setInterval('secondPassed()', 1000);
 
+     
+
 
 </script>
 {% endblock %}
@@ -44,16 +111,16 @@ function secondPassed() {
 
 {% block body %}
 
-<div class="container col_9">
+<div class="container col_9"  style="background-color: #56a5eb; height: 100%;">
 
     <div id="game" class="justify-center flex-column">
       <div id="hud">
         <div id="hud-item">
-          <p id="progressText" class="hud-prefix">
+          <p id="progressText" class="hud-prefix" style="color: white;">
             Question  {{quiz.Quest_No}}/10
           </p>
-          <div id="progressBar">
-            <div id="progressBarFull"></div>
+          <div id="progressBar" style="border-style: solid;border-color:black">
+            <div id="progressBarFull" style="background-color: white;"></div>
           </div>
         </div>
         
@@ -61,32 +128,42 @@ function secondPassed() {
           <p class="hud-prefix">
             Time
           </p>
-          <h1 class="hud-main-text" id="time">
+          <h1 class="hud-main-text" id="time" style="color: white;">
             0:30
           </h1>
         </div>
       </div>
       <form id="form2" method="POST" action="/quiz/next">
     
-      <h3 id="question" name ="question"><pre>{{quiz.Question}}</pre></h3>
+      <h2 id="question" name ="question" style="margin-bottom: 40px;"><pre style="min-width: fit-content;">{{quiz.Question}}</pre></h2>
       <input type="hidden" value="{{quiz.Quest_No}}" name="questno"/>
-      <div class="choice-container">
-        <p class="choice-prefix">A</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio"  id="check1" value="1" name="ans" required>&nbsp;<pre style="padding:40px; width: 500px; max-width: 80%;min-width: 185px;line-height: 20px;">{{quiz.Choice1}}</pre></pre>
+      <br>
+      <div class="choice-container" style="min-width: 310px; border-radius: 10px;">
+        <p class="choice-prefix" style="border-top-right-radius:10px;border-bottom-right-radius:10px;">A</p>
+        <label class="container1"style="margin-top:20px;margin-left:5px;">
+          <pre style="padding:20px; width: fit-content; max-width: 100%;min-width: 185px;line-height: 20px;">{{quiz.Choice1}}<input type="radio" id="check1" value="1" name="ans" required><span class="checkmark"></span></pre>
+        </label>
       </div>
-      <div class="choice-container">
-        <p class="choice-prefix">B</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio" id="check2" value="2" name="ans" />&nbsp;<pre style="padding:40px; width: 500px; max-width: 80%;min-width: 185px;line-height: 20px;">{{quiz.Choice2}}</pre></pre>
+      <div class="choice-container" style="min-width: 310px; border-radius: 10px;">
+        <p class="choice-prefix" style="border-top-right-radius:10px;border-bottom-right-radius:10px;">B</p>
+        <label class="container1"style="margin-top:20px;margin-left:5px;">
+          <pre style="padding:20px; width: fit-content; max-width: 100%;;min-width: 185px;line-height: 20px;">{{quiz.Choice2}}<input type="radio" id="check2" value="2" name="ans" required><span class="checkmark"></span></pre>
+        </label>
       </div>
-      <div class="choice-container">
-        <p class="choice-prefix">C</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio" id="check3" value="3" name="ans" />&nbsp;<pre style="padding:40px; width: 500px; max-width: 80%;min-width: 185px;line-height: 20px;">{{quiz.Choice3}}</pre></pre>
+      <div class="choice-container" style="min-width: 310px; border-radius: 10px;">
+        <p class="choice-prefix" style="border-top-right-radius:10px;border-bottom-right-radius:10px;">C</p>
+        <label class="container1"style="margin-top:20px;margin-left:5px;">
+          <pre style="padding:20px; width: fit-content; max-width: 100%;min-width: 185px;line-height: 20px;">{{quiz.Choice3}}<input type="radio" id="check3" value="3" name="ans" required><span class="checkmark"></span></pre>
+        </label>
+       </div>
+      <div class="choice-container" style="min-width: 310px; border-radius: 10px;">
+        <p class="choice-prefix" style="border-top-right-radius:10px;border-bottom-right-radius:10px;">D</p>
+        <label class="container1"style="margin-top:20px;margin-left:5px;">
+          <pre style="padding:20px; width: fit-content; max-width: 100%;min-width: 185px;line-height: 20px;">{{quiz.Choice4}}<input type="radio" id="check4" value="4" name="ans" required><span class="checkmark"></span></pre>
+        </label>
       </div>
-      <div class="choice-container">
-        <p class="choice-prefix">D</p>
-        <pre class="choice-container" style="margin: auto;"><input type="radio" id="check4" value="4" name="ans" />&nbsp;<pre style="padding:40px; width: 500px; max-width: 80%;min-width: 185px;line-height: 20px;">{{quiz.Choice4}}</pre></pre>
-      </div><br>
-      <br><div>
+      <br>
+      <br><div><br><br>
           <button class="btn" type="submit" >SUBMIT</button>
       </div>
 
@@ -94,6 +171,7 @@ function secondPassed() {
       </form>
     </div>
   </div>
+
 <script>
 const progressBarFull = document.getElementById("progressBarFull");
 function progress()

@@ -19,18 +19,9 @@ function Reset()
 function Home()
 {
     document.getElementById("home").className = "current";
-    document.getElementById("aboutus").classList.remove("current");
 
 }
 
-function Aboutus()
-{
-    document.getElementById("aboutus").className = "current";
-    document.getElementById("home").classList.remove("current");
-    document.getElementById("register").style.display ="none";
-    document.getElementById("start").style.display ="none";
-
-}
 
 var check = function() {
 	if (document.getElementById('password').value ==
@@ -52,7 +43,6 @@ var check = function() {
 {% block nav %}
 <ul class="menu">
 <li id="home" class="current" ><a href="/" onclick="Home();" >Home</a></li>
-<li id="aboutus"><a type="button" onclick="Aboutus();">About Us</a></li>	
 </ul>
 {% endblock %}
 

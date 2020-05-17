@@ -5,13 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Spectra Quiz</title>
 {% block script %}  {% endblock %}
+<style>
+  html
+  {
+    background-color:#56a5eb;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+  }
+  
 
+</style>
 <link href="{{ url_for('static',filename = 'css/kickstart.css')}}" rel="stylesheet">
 <link href="{{ url_for('static',filename = 'css/style.css')}}" rel="stylesheet">
 <script src="{{ url_for('static',filename = 'js/kickstart.js')}}"></script>        
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
-<body>
+<body style="background-color:#56a5eb; background-size: cover;">
 
 <!-- Menu Horizontal -->
 {% block nav %} {% endblock %}
@@ -56,4 +68,5 @@
 <div class="clear"></div>
 
 
-</body></html>
+</body>
+</html>
