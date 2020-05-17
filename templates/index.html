@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
 
 {% block script %} 
+<style>
+input[type=text] ,input[type=password],input[type=tel],input[type=email] {
+  max-width: 350px;
+  height: 50px;
+  min-width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
 
+
+select {
+  max-width: 300px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+</style>
 <script>
 
 function Register()
@@ -42,27 +60,29 @@ var check = function() {
 
 {% block nav %}
 <ul class="menu">
-<li id="home" class="current" ><a href="/" onclick="Home();" >Home</a></li>
+<li id="home" class="current" ><a href="/" style="background-color:#56a5eb;" onclick="Home();" >Home</a></li>
 </ul>
 {% endblock %}
 
 {% block body %}
 
     <div class="col_9">
+    <center>
         <div id ="start" style="display:block">
-            <h3><b>GRILL</b></h3>
+            <h2><b>GRILL</b></h2><br>
             <p> <h5>Welcome To Spectra Technical Quiz </h5></p>
         
         <a class="btn" onclick = "Register();">SIGNUP</a>
         <P>You need to Signup for Participating</p>
         </div>
-    
+    </center>
         <div style="display:none" id ="register">
         <h3>Register For Quiz </h3>
             <br><br>
         <form id="regForm" method="POST" action="/register">
         <div>
-            <label>Branch</label>
+            <div class="row">
+            <label>Branch:</label> 
             <select name="branch" required>
                 <option value="">--select--</option>
                 <option value="CSE">CSE</option>
@@ -73,7 +93,7 @@ var check = function() {
         </div>
         <br />
         <div>
-            <label>Semester</label>
+            <label>Semester:</label>
             <select name="semester" required>
                 <option value="">--select--</option>
                 <option value="s1">S1</option>
@@ -86,50 +106,60 @@ var check = function() {
                 <option value="s8">S8</option>
             </select>
         </div>
+        </div>
         <br />
         <div>
             <label>Name: </label>
-            <input type="text" name="name" required>
+            <input type="text" name="name" placeholder="Enter Your Name" required>
         </div><br />
         <div>
             <label>Email Address: </label>
-            <input type="email" name="email" title="Valid email address" required>
+            <input type="email" name="email" placeholder="Enter Email Id" title="Valid email address" required>
         </div><br />
         <div>
             <label>Mobile : </label>
-            <input type="tel" name="phone" maxlength="10" pattern="[0-9]{10}" title="10 digit number" required>
+            <input type="tel" name="phone" maxlength="10" placeholder="Enter Mobile Number" pattern="[0-9]{10}" title="10 digit number" required>
         </div><br />
         <div>
             <label>Username: </label>
-            <input type="text" name="username" minlength="5" pattern="([0-9a-zA-Z]*)" title="It contain letters and numbers only" required>
+            <input type="text" name="username" minlength="5" placeholder="Enter Username" pattern="([0-9a-zA-Z]*)" title="It contain letters and numbers only" required>
         </div><br />
         <div>
             <label>Password: </label>
-            <input type="password" name="password" id="password" minlength="5" pattern="[0-9a-zA-Z].{5,}" title="It includes  numbers , uppercase,lowercase letter, and at least 5 or more characters required" onkeyup=" check();" required>
+            <input type="password" name="password" id="password" placeholder="Enter Password" minlength="5" pattern="[0-9a-zA-Z].{5,}" title="It includes  numbers , uppercase,lowercase letter, and at least 5 or more characters required" onkeyup=" check();" required>
         </div><br />
         <div>
             <label>Password Confirm: </label>
-            <input type="password" name="password2" id="confpassword" minlength="5" pattern="[0-9a-zA-Z].{5,}" title="It includes  numbers , uppercase,lowercase letter, and at least 5 or more characters required" onkeyup=" check();" required>
+            <input type="password" name="password2" id="confpassword" placeholder="Re-type Password" minlength="5" pattern="[0-9a-zA-Z].{5,}" title="It includes  numbers , uppercase,lowercase letter, and at least 5 or more characters required" onkeyup=" check();" required>
         </div><br><span id='message'></span>
         <br /><br>
-        <div>
+        
+        <div style="margin-left:19%;">
+            
             <button class="btn" id="registerbut" type="submit">SIGNUP</button>
-            <button class="btn" type="button" onclick="Reset();">CANCEL</button>
+            <input style="background-color: red;" type="button"value="CANCEL" onclick="Reset();">
+            
         </div>
     </form>
     
 </div>
+
+<br><br>
+<hr style="height: 2px;color: black;background-color: black;">
+<br><br>
 </div>
         
         <div class="col_3">
-            <h4>Take<b> Quiz</b></h4>
+            <center>
+            <h4>Take<b> Quiz</b></h4><br>
         <form method="post" action="/user/login">
-            <label> Username: </label>
-            <input type="text" name="username" minlength="5" pattern="([0-9a-zA-Z]*)" title="It contain letters and numbers only" required>
-            <label> Password: </label>
-            <input type="password" name="password" minlength="5" pattern="[0-9a-zA-Z].{5,}" title="It includes  numbers , uppercase,lowercase letter, and at least 5 or more characters required" required><br><br>
-            <button class="btn" type="submit">LOGIN</button>
+            
+           <input type="text" name="username" minlength="5" placeholder="Enter Your Username" pattern="([0-9a-zA-Z]*)" title="It contain letters and numbers only" required>
+            <br>
+            <input type="password" name="password" minlength="5" placeholder="Enter Your Password" pattern="[0-9a-zA-Z].{5,}" title="It includes  numbers , uppercase,lowercase letter, and at least 5 or more characters required" required><br><br>
+             <button class="btn" type="submit">LOGIN</button> 
         </form>
+            </center>
         </div>
        
     
