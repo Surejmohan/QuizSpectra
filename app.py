@@ -216,7 +216,7 @@ def Quiz_next():
             print(ans)
             if session["no"] < int(questno):
                 print(ans)
-                if(int(questno) == 10):
+                if(int(questno) == 15):
                     session.clear()
                     flash('You have Finished Your Quiz Successfully','success')
                     return redirect(url_for('index'))

@@ -70,7 +70,7 @@
   </style>
 <script>
 
-var seconds = 30;
+var seconds = 45;
 function secondPassed() {
 
           var minute = Math.floor(seconds/60);
@@ -117,7 +117,7 @@ function secondPassed() {
       <div id="hud">
         <div id="hud-item">
           <p id="progressText" class="hud-prefix" style="color: white;">
-            Question  {{quiz.Quest_No}}/10
+            Question  {{quiz.Quest_No}}/15
           </p>
           <div id="progressBar" style="border-style: solid;border-color:black">
             <div id="progressBarFull" style="background-color: white;"></div>
@@ -129,7 +129,7 @@ function secondPassed() {
             Time
           </p>
           <h1 class="hud-main-text" id="time" style="color: white;">
-            0:30
+            0:45
           </h1>
         </div>
       </div>
@@ -177,7 +177,7 @@ const progressBarFull = document.getElementById("progressBarFull");
 function progress()
 {
   var curr = '{{quiz.Quest_No}}'
-  progressBarFull.style.width = `${(parseInt(curr) / 10) * 100}%`;
+  progressBarFull.style.width = `${(parseInt(curr) / 15) * 100}%`;
 }
 var progressbar = setInterval('progress()', 100);
 
